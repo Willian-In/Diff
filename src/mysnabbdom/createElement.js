@@ -1,4 +1,4 @@
-export default function (vnode) {
+export default function createElement (vnode) {
   console.log(vnode);
   // 将虚拟节点创建成真实DOM插入标杆前
   const domNode = document.createElement(vnode.sel)
@@ -9,15 +9,18 @@ export default function (vnode) {
     // 将孤儿节点上树, 让标杆节点的父元素调用insertBefore方法，将孤儿节点插入到标杆节点之前
     // pivot.parentNode.insertBefore(domNode, pivot)
     // 第二种方案
-    vnode.elm = domNode
   } else if (Array.isArray(vnode.children) && vnode.children.length > 0) {
-    // 必须使用递归创建真实DOM 
-    let ch = vnode.children
-    for (let i = 0; i < ch.length; i++) {
-      console.log(ch[i]);
-
-    }
+    // 必须使用递归创建真实DOM
+    for (let i = 0; i < vnode.children.length; i++) {
+      let ch = vnode.children[i]
+      // chDom是上一层返回的elm
+      console.log(ch);
+      let chDom = createElement(ch)
+      // vnode.elm.appendChild往当前vnode的子节点插入dom
+      console.log(chDom, '-----1234');
+      domNode.appendChild(chDom)
+    } 
   }
-
+  vnode.elm = domNode
   return vnode.elm
 }

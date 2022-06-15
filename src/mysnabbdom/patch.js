@@ -21,7 +21,7 @@ import createElement from './createElement.js';
 export default function (oldVnode, newVnode) {
   // 1 判断oldVnode 是不是DOM节点
   if (oldVnode.sel === 'null' || oldVnode.sel === undefined) {
-    // 如果是真实DOM，则包装成虚拟节点 toLowerCase 转为小学
+    // 如果是真实DOM，则包装成虚拟节点 toLowerCase 转为小写
     oldVnode = vnode(oldVnode.tagName.toLowerCase(), {}, [], undefined, oldVnode)
     console.log(oldVnode);
   }
@@ -33,6 +33,12 @@ export default function (oldVnode, newVnode) {
     // 如果不是同一个节点直接暴力
     // 将虚拟DOM创建为DOM
     let newVnodeElm = createElement(newVnode, oldVnode.elm)
-    oldVnode.elm.parentNode.insertBefore(newVnodeElm, oldVnode.elm)
+    // 插入到老节点之前
+    if (oldVnode.elm && newVnodeElm) {
+      oldVnode.elm.parentNode.insertBefore(newVnodeElm, oldVnode.elm)
+    }
+    // 删除老节点
+    oldVnode.elm.parentNode.removeChild(oldVnode.elm)
+
   }
 }
