@@ -2,25 +2,32 @@ import h from './mysnabbdom/h.js'
 import patch from './mysnabbdom/patch.js'
 // 测试用例
 const myVnode = h('h1', {}, '欢迎光临')
-const myvNode3 = h('ul', {}, [
-  h('li', {}, '牛奶'),
-  h('li', {}, [
-    h('div', {}, '牛啊'),
-    h('div', {}, [
-      h('h2', {}, '嘻嘻'),
-      h('h2', {}, '哈哈'),
-      h('h2', {}, '呵呵'),
-    ]),
-    h('div', {}, '猪猪')
-  ]),
-  h('li', {}, '修狗') // 如果子元素有且只有一个可以省略不写数组
-])
+const myvNode3 = h('ul', {}, '我是一个老的节点, 我就是一串文字, 我没有子节点')
 const container = document.getElementById('container')
 const btn = document.getElementById('btn')
 btn.textContent = '点击改变DOM'
-patch(container, myVnode)
+
+
+const myvNode4 = h('ul', {}, [
+  h('li', { key: 'A' }, 'A'),
+  h('li', { key: 'B' }, 'B'),
+  h('li', { key: 'QQQQ' }, 'QQQQ'),
+  h('li', { key: 'C' }, 'C'),
+])
+
+const myvNode6 = h('ul', {}, [
+  h('li', { key: 'C' }, 'C'),
+  h('li', { key: 'B' }, 'B'),
+  h('li', { key: 'A' }, 'AAAAAAA'),
+
+])
+patch(container, myvNode4)
+
+const myvNode5 = h('ul', {}, '哦哈呦')
+
+// patch(myvNode3, myvNode4)
 
 btn.onclick = () => {
-  patch(myVnode, myvNode3)
+  patch(myvNode4, myvNode6)
 }
 // console.log(myVnode);

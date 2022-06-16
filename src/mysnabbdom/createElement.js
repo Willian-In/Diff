@@ -1,5 +1,5 @@
 export default function createElement (vnode) {
-  console.log(vnode);
+  // console.log(vnode);
   // 将虚拟节点创建成真实DOM插入标杆前
   const domNode = document.createElement(vnode.sel)
   // 判断是有子节点还是有文本
@@ -14,10 +14,10 @@ export default function createElement (vnode) {
     for (let i = 0; i < vnode.children.length; i++) {
       let ch = vnode.children[i]
       // chDom是上一层返回的elm
-      console.log(ch);
+      // console.log(ch);
       let chDom = createElement(ch)
       // vnode.elm.appendChild往当前vnode的子节点插入dom
-      console.log(chDom, '-----1234');
+      // console.log(chDom, '-----1234');
       domNode.appendChild(chDom)
     } 
   }
