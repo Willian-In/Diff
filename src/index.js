@@ -11,15 +11,23 @@ btn.textContent = '点击改变DOM'
 const myvNode4 = h('ul', {}, [
   h('li', { key: 'A' }, 'A'),
   h('li', { key: 'B' }, 'B'),
-  h('li', { key: 'QQQQ' }, 'QQQQ'),
   h('li', { key: 'C' }, 'C'),
+  h('li', { key: 'E' }, 'E'),
+  h('li', { key: 'F' }, 'F'),
+  h('li', { key: 'G' }, 'G'),
 ])
 
 const myvNode6 = h('ul', {}, [
-  h('li', { key: 'C' }, 'C'),
+  h('li', { key: 'Q' }, 'Q'),
+  h('li', { key: 'T' }, 'T'),
+  h('li', { key: 'Z' }, 'Z'),
+  h('li', { key: 'A' }, 'A'),
+  h('li', { key: 'V' }, 'V'),
   h('li', { key: 'B' }, 'B'),
-  h('li', { key: 'A' }, 'AAAAAAA'),
-
+  h('li', { key: 'C' }, 'C'),
+  h('li', { key: 'E' }, 'E'),
+  h('li', { key: 'F' }, 'F'),
+  h('li', { key: 'G' }, 'G'),
 ])
 patch(container, myvNode4)
 
